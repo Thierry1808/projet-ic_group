@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ic-webapp
+  namespace: ic-webapp
+  labels:
+    env: prod
+    app: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: icc-webapp
+  template:
+    metadata:
+      labels:
+        app: icc-webapp
+    spec:
+      containers:
+      - name: ic-webapp
+        image: thierry237
+        env:
+        - name: ODOO_URL
+          value: http://192.168.80.18:30069/
+        - name: PGADMIN_URL
+          value: http://192.168.80.18:30050/ 
+        ports:
+        - containerPort: 8080
+          name: ic-webapp
