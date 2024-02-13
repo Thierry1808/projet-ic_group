@@ -1,6 +1,6 @@
 FROM python:3.6-alpine
 LABEL maintainer="Thierry"
-WORDIR /opt
+WORKDIR /opt
 RUN pip install flask
 ADD . /opt
 VOLUME /opt
