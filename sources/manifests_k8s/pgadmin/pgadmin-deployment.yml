@@ -32,7 +32,8 @@ spec:
           name: postgres
         volumeMounts:
           - name: pg-admin-server
-            mountPath: /pgadmin4
+            mountPath: /pgadmin4/servers.json
+            subPath: servers.json
           - name: pg-admin-data
             mountPath: /var/lib/pgadmin
     volumes:
