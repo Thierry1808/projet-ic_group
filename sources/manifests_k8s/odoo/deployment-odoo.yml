@@ -17,8 +17,8 @@ spec:
         app: odoo
     spec:
       containers:
-      - name: odoo
-        image: odoo
+      - image: odoo
+        name: odoo
         env:
         - name: USER
           value: toto

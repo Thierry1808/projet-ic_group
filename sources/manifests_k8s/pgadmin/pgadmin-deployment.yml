@@ -17,8 +17,8 @@ spec:
         app: pg-admin
     spec:
       containers:
-      - name: pg-admin
-        image: dpage/pgadmin4
+      - image: dpage/pgadmin4
+        name: pg-admin
         env:
         - name: PGADMIN_DEFAULT_EMAIL
           value: pgadmin@pgadmin.com
