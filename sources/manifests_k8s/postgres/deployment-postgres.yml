@@ -38,4 +38,4 @@ spec:
     volume:
       - name: pg-data
         hostPath:
-          path: /data_k8s/postgre    
+          path: /data_k8s/postgre
