@@ -44,7 +44,7 @@ spec:
         hostPath:
           path: /data_docker/config
       - name: extra-addons-persistent-storage
-        hostpath:
+        hostPath:
           path: /data_docker/addons
       - name: lib-odoo-persistent-storage
         persistentVolumeClaim:
