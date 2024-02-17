@@ -5,16 +5,16 @@ metadata:
   namespace: ic-webapp
   labels:
     env: prod
-    app: prod
+    app: ic-webapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: icc-webapp
+      app: ic-webapp
   template:
     metadata:
       labels:
-        app: icc-webapp
+        app: ic-webapp
     spec:
       containers:
       - name: ic-webapp
