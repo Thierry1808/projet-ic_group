@@ -41,11 +41,11 @@ spec:
           mountPath: /mnt/extra-addons
       volumes:
       - name: odoo-persistent-storage
-          hostPath:
-            path: /data_docker/config
+        hostPath:
+          path: /data_docker/config
       - name: extra-addons-persistent-storage
-          hostpath:
-            path: /data_docker/addons
+        hostpath:
+          path: /data_docker/addons
       - name: lib-odoo-persistent-storage
-          persistentVolumeClaim:
-            claimName: odoo-pvc      
+        persistentVolumeClaim:
+          claimName: odoo-pvc      
