@@ -35,7 +35,7 @@ spec:
         volumeMounts:
           - name: pg-data
             mountPath: /var/lib/postgresql/data
-    volume:
+    volumes:
       - name: pg-data
         hostPath:
           path: /data_k8s/postgre
