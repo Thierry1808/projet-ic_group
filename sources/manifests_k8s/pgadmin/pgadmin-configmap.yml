@@ -7,15 +7,15 @@ metadata:
     env: prod
 data:
   servers.json: |
-  {
-      "Servers": {
-        "1": {
-          "Name": "docker_postgres",
-          "Group": "docker_postgres_group",
-          "Host": "postgres",
-          "MaintenanceDB": "postgres",
-          "Username": "odoo_user",
-          "SSLMode": "prefer",
+    { 
+        "Servers": {
+          "1": {
+            "Name": "docker_postgres",
+            "Group": "docker_postgres_group",
+            "Host": "postgres",
+            "MaintenanceDB": "postgres",
+            "Username": "odoo_user",
+            "SSLMode": "prefer",
+          }
         }
-      }
-  }
+    }

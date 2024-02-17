@@ -36,7 +36,7 @@ spec:
           subPath: servers.json
         - name: pg-admin-data
           mountPath: /var/lib/pgadmin
-    volumes:
+      volumes:
       - name: pg-admin-server
         configMap:
           name: special-config
