@@ -17,8 +17,8 @@ spec:
         app: postgres
     spec:
       containers:
-      - name: postgres
-        image: postgres:10
+      - image: postgres:10
+        name: postgres
         env:
         - name: POSTGRES_DB
           value: postgres
@@ -35,7 +35,7 @@ spec:
         volumeMounts:
         - name: pg-data
           mountPath: /var/lib/postgresql/data
-    volumes:
+      volumes:
       - name: pg-data
         hostPath:
           path: /data_k8s/postgre
