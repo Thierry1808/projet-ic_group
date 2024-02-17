@@ -33,12 +33,12 @@ spec:
         - containerPort: 8069
           name: odoo
         volumeMounts:
-          - name: odoo-persistent-storage
-            mountPath: /etc/odoo
-          - name: lib-odoo-persistent-storage
-            mountPath: /var/lib/odoo
-          - name: extra-addons-persistent-storage
-            mountPath: /mnt/extra-addons
+        - name: odoo-persistent-storage
+          mountPath: /etc/odoo
+        - name: lib-odoo-persistent-storage
+          mountPath: /var/lib/odoo
+        - name: extra-addons-persistent-storage
+          mountPath: /mnt/extra-addons
     volumes:
       - name: odoo-persistent-storage
         hostPath:
