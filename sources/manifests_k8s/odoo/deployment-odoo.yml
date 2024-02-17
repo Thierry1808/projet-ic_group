@@ -17,7 +17,7 @@ spec:
         app: odoo
     spec:
       containers:
-      - image: odoo:latest
+      - image: odoo
         name: odoo
         env:
         - name: USER
