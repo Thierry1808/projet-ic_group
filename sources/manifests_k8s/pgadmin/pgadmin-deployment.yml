@@ -39,7 +39,7 @@ spec:
       volumes:
       - name: pg-admin-server
         configMap:
-          name: special-config
+          name: pgadmin-config
           items:
           - key: servers.json
             path: servers.json
