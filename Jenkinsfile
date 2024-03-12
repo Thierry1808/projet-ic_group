@@ -12,7 +12,7 @@ pipeline {
             agent any
             steps {
                 script {
-                    sh 'docker build --no-cache -f ./sources/app/${DOCKERFILE_NAME} -t ${DOCKERHUB_ID}/$IMAGE_NAME_TAG ./sources/app'
+                    sh 'docker build --no-cache -f ./sources/app/${DOCKERFILE_NAME} -t ${DOCKERHUB_ID}/$IMAGE_NAME:$IMAGE_TAG ./sources/app'
                 }
             }
         }
