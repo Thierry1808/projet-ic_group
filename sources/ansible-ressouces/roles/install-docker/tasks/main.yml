@@ -23,7 +23,7 @@
 
 - name: Install python-pip
   command: python3 /tmp/get-pip.py
-  ignore_errors: yes
+  ignore_errors: "yes"
 
 - name: Install docker python
   pip:
@@ -52,24 +52,24 @@
   user:
     name: "{{ ansible_user }}"
     groups: dockerroot
-    append: yes
+    append: "yes"
   when: ansible-distribution == "CentOS"
 
 - name: Add remote user to docker group on EC2
   user:
     name: "{{ ansible_user }}"
     groups: docker
-    append: yes
+    append: "yes"
   when: ansible-distribution == "Amazon"
 
 - name: Start and enable the Docker daemon
   service:
     name: docker
     state: started
-    enabled: yes
+    enabled: "yes"
 
 - name: Install docker-compose
   get_url:
     url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
     dest: /usr/bin/docker-compose
-    mode: 0755
+    mode: "0755"

@@ -1,5 +1,5 @@
 ---
 - hosts: prod:dev
-  become: true
+  become: "true"
   roles:
     - { role: odoo_role }
