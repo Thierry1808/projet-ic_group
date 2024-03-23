@@ -24,7 +24,7 @@ services:
         volumes:
             - '{{ odoo_config_folder }}:/etc/odoo'
             - '{{ odoo_addons_folder }}:/mnt/extra-addons'
-            - '{{ odoo_web_data_volume }}: /var/lib/odoo'
+            - '{{ odoo_web_data_volume }}:/var/lib/odoo'
         environment:
             - USER=odoo_user
             - PASSWORD=odoo_password
