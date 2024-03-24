@@ -1,6 +1,8 @@
 ---
 - hosts: prod:dev
   become: "true"
+  vars_files:
+    - files/secrets/credentials.yml
   gather_facts: "yes"
   roles:
     - { role: install-docker }
