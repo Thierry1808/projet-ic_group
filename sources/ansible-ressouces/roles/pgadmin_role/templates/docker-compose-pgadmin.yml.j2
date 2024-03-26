@@ -7,7 +7,7 @@ services:
             - {{ pgadmin_network }}
         environment:
             - 'PGADMIN_DEFAULT_EMAIL={{ pg_admin_email }}'
-            - 'PGADMIN_DEFAULT_PASSWORD={{ pg_admin_paswword }}'
+            - 'PGADMIN_DEFAULT_PASSWORD={{ pg_admin_password }}'
         ports:
             - "5050:80"
         volumes:

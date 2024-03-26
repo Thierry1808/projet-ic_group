@@ -3,7 +3,6 @@
   yum:
     name: "*"
     state: latest
-
 - name: Install pre-requisites
   yum:
     name: "{{ item }}"
@@ -15,69 +14,46 @@
     - python3
     - python3-pip
   when: ansible_distribution == "CentOS"
-
-- name: Uninstall old versions
-  yum:
-    name:
-      - docker
-      - docker-client
-      - docker-client-latest
-      - docker-common
-      - docker-latest
-      - docker-latest-logrotate
-      - docker-logrotate
-      - docker-engine
-    state: absent
-  
-
 - name: Add Docker ce repo
   get_url:
     url: https://download.docker.com/linux/centos/docker-ce.repo
     dest: /etc/yum.repos.d/docker-ce.repo
   when: ansible_distribution == "CentOS"
-
 - name: Install Docker Engine
   yum:
-    name: "{{ packages }}"
-  vars:
-    packages:
-              - docker-ce
-              - docker-ce-cli
-              - containerd.io
-              - docker-buildx-plugin
-              - docker-compose-plugin
-              - docker-ce-rootless-extras
+    name: docker-ce
     state: present
   when: ansible_distribution == "CentOS"
-
 - name: Install Docker on Amazon linux
   command: amazon-linux-extras install docker -y
   args:
     creates: /usr/bin/docker
   when: ansible_distribution == "Amazon"
-
+- name: Start and enable the Docker daemon
+  shell: systemctl start docker
+- name: add group docker
+  group:
+    name: docker
+    state: present
 - name: Add remote user to docker group
   user:
     name: "{{ ansible_user }}"
     groups: docker
     append: "yes"
   when: ansible_distribution == "CentOS"
-
 - name: Add remote user to docker group on EC2
   user:
     name: "{{ ansible_user }}"
     groups: docker
     append: "yes"
   when: ansible_distribution == "Amazon"
-
 - name: Start and enable the Docker daemon
   service:
     name: docker
     state: started
-    enabled: "yes"
-
+    enabled: true
 - name: Install docker-compose
   get_url:
     url: https://github.com/docker/compose/releases/download/v2.24.7/docker-compose-Linux-x86_64
     dest: /usr/bin/docker-compose
-    mode: "0755"
+    mode: 0755
