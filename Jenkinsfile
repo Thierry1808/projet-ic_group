@@ -18,22 +18,6 @@ pipeline {
                 }
             }
         }
-        stage ('Scan Image with Snyk') {
-            agent any
-            environment {
-               SNYK_TOKEN = credentials('snyk_token')
-            }
-            steps {
-                script {
-                    sh '''
-                    #echo "Starting Image scan ${DOCKERHUB_ID}/$IMAGE_NAME:$IMAGE_TAG ..."
-                    echo " There is Scan result :"
-                    #SCAN_RESULT=$(docker run --rm -e SNYK_TOKEN=$SNYK_TOKEN -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/app snyk/snyk:docker snyk test --docker $DOCKERHUB_ID/$IMAGE_NAME:$IMAGE_TAG --json || if [[ $? -gt "1" ]]; then echo -e "Warning, you must see scan result \n" ; false; elif [[ $? -eq "0" ]]; then echo "PASS : Nothing to do"; elif [[ $? -eq "1" ]]; then echo "Warning, passing with something to do"; else false; fi)
-                    echo "Scan ended"
-                '''
-                }
-            }
-        }
         stage ('Run container based on builded image') {
             agent any
             steps {
