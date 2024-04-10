@@ -96,7 +96,7 @@ pipeline {
                                 apt update -y
                                 apt install sshpass -y
                                 export ANSIBLE_CONFIG=$(pwd)/sources/ansible-ressources/ansible.cfg
-                                ansible all -m ping --private-key id_rsa -i $(PWD)/sources/ansible-ressources/hosts.yml -l prod
+                                ansible all -m ping --private-key id_rsa -i $(pwd)/sources/ansible-ressources/hosts.yml -l prod
                             '''
                         }
                     }
@@ -106,7 +106,7 @@ pipeline {
                         script {
                             sh '''
                                 export ANSIBLE_CONFIG=$(pwd)/sources/ansible-ressources/ansible.cfg
-                                ansible-lint -x 306 sources/ansible-ressources/playbooks/* || echo passing linter
+                                ansible-lint -x 306 sources/ansible-ressources/playbook/* || echo passing linter
                                 echo ${GIT_BRANCH}
                             '''
                         }
@@ -120,7 +120,7 @@ pipeline {
                                 script {
                                     sh '''
                                         export ANSIBLE_CONFIG=$(pwd)/sources/ansible-ressources/ansible.cfg
-                                        ansible-playbook sources/ansible-ressources/playbooks/install-docker.yml --vault-password-file vault.key --private-key id_rsa -l odoo_server,pg_admin_server
+                                        ansible-playbook sources/ansible-ressources/playbook/install-docker.yml --vault-password-file vault.key --private-key id_rsa -l odoo_server,pg_admin_server
                                     '''
                                 }
                             }
@@ -130,7 +130,7 @@ pipeline {
                                 script {
                                     sh '''
                                         export ANSIBLE_CONFIG=$(pwd)/sources/ansible-ressources/ansible.cfg
-                                        ansible-playbook sources/ansible-ressources/playbooks/deploy-pgadmin.yml --vault-password-file vault.key --private-key id_rsa -l pg_admin
+                                        ansible-playbook sources/ansible-ressources/playbook/deploy-pgadmin.yml --vault-password-file vault.key --private-key id_rsa -l pg_admin
                                     '''
                                 }
                             }
@@ -140,7 +140,7 @@ pipeline {
                                 script {
                                     sh '''
                                         export ANSIBLE_CONFIG=$(pwd)/sources/ansible-ressources/ansible.cfg
-                                        ansible-playbook sources/ansible-ressources/playbooks/deploy-odoo.yml --vault-password-file vault.key --private-key id_rsa -l odoo
+                                        ansible-playbook sources/ansible-ressources/playbook/deploy-odoo.yml --vault-password-file vault.key --private-key id_rsa -l odoo
                                     '''
                                 }
                             }
