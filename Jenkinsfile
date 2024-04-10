@@ -1,7 +1,7 @@
 @Library("Library")_
 
 pipeline {
-    environment {
+  environment {
         IMAGE_NAME = "ic-webapp"
         APP_CONTAINER_PORT = "8080"
         DOCKERHUB_ID = "thierry237"
@@ -184,4 +184,4 @@ pipeline {
             }
         }
     }  
-}
+}    
